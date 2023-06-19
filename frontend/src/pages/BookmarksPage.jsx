@@ -1,9 +1,9 @@
 import React from 'react'
 
-const BookMarksPage = () => {
+const BookmarksPage = () => {
   return (
     <div>BookMarksPage</div>
   )
 }
 
-export default BookMarksPage
+export default BookmarksPage
