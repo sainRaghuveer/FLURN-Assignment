@@ -8,15 +8,14 @@ const SearchPage = () => {
 
   const handleSearch = async () => {
     try {
-      // Make API call to search the Pokemon by name
+      // Making API call to search the Pokemon by name
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`);
       if (response.ok) {
-        // If the API call is successful, redirect to the listing page with the search query parameter
+        // If the API call is successful, redirecting to the listing page with the search query parameter
         navigate(`/list?search=${pokemonName}`);
       } else {
-        // If the API call fails, display an error message
+        // If the API call fails, displaying an error message
         console.log('Pokemon not found');
-        // You can display an error message on the page or handle it in any other way you prefer
       }
     } catch (error) {
       console.log(error);

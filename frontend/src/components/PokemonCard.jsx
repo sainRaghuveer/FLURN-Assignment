@@ -11,7 +11,6 @@ const PokemonCard = ({ pokemonName, PokemonUrl, pokemon }) => {
     <div className="pokemon-card">
       <h3>{pokemonName}</h3>
       <Image src={url} alt={pokemon.name}></Image>
-      {/* Add additional information about the Pokemon */}
       {/* <p>Height: {pokemon.height}</p>
       <p>Weight: {pokemon.weight}</p> */}
       {/* Display more details as needed */}
