@@ -11,7 +11,7 @@ const AllRoutes = () => {
       <Routes>
         <Route path="/" element={<SearchPage />} />
         <Route path="/list" element={<ListingPage />} />
-        <Route path="/details/:pokemonName" element={<DetailsPage />} />
+        <Route path="/pokemon/:pokemonName" element={<DetailsPage />} />
         <Route path="/bookmarks" element={<BookmarksPage />} />
       </Routes>
     </div>
