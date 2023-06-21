@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
+import {FaRegBookmark, FaBookmark} from "react-icons/fa"
 
 import style from '../styles/pokemonDetails.module.css';
 import { Image, Input, Table, Tbody, Td, Th, Tr } from '@chakra-ui/react';
@@ -71,7 +71,7 @@ function DetailsPage() {
 					<Image title={pokemon?.name + " back default"} src={pokemon?.sprites?.back_default} alt={pokemon?.name + " back default"} />
 				</aside>
 				<div className={style["pokemon-details"]}>
-					<h1>{pokemon?.name} <span onClick={handleDoFavorite}>{favoriteList.includes(pokemon?.name) ? <AiFillHeart /> : <AiOutlineHeart />}</span></h1>
+					<h1>{pokemon?.name} <span onClick={handleDoFavorite}>{favoriteList.includes(pokemon?.name) ? <FaBookmark /> : <FaRegBookmark />}</span></h1>
 					<div className={style["pokemon-tables"]}>
 						<Table>
 							<Tbody>

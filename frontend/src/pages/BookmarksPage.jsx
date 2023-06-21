@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
-import style from "../styles/Bookmarks.module.css"
+import style from "../styles/Bookmarks.module.css";
+import {FaRegBookmark, FaBookmark} from "react-icons/fa"
 
 
 function BookmarksPage() {
@@ -38,7 +38,7 @@ function BookmarksPage() {
             <h3>{pokemon}</h3>
             <p># {i + 1}</p>
           </Link>
-          <span onClick={() => handleDoFavorite(pokemon)}>{favoriteList.includes(pokemon) ? <AiFillHeart /> : <AiOutlineHeart />}</span>
+          <span onClick={() => handleDoFavorite(pokemon)}>{favoriteList.includes(pokemon) ? <FaBookmark /> : <FaRegBookmark />}</span>
         </article>)
       }
     </div>
