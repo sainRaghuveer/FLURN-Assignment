@@ -17,6 +17,7 @@ import {
   Center,
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { useNavigate } from 'react-router-dom';
 
 const NavLink = ({ children }) => (
   <Link
@@ -35,12 +36,17 @@ const NavLink = ({ children }) => (
 export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
   return (
     <>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <Box>FLURN</Box>
-
+          <Box style={{display:"flex", justifyContent:"space-evenly", width:"40%"}}>
+            <Button onClick={()=>navigate("/")}>Search</Button>
+            <Button onClick={()=>navigate("/list")}>List</Button>
+            <Button onClick={()=>navigate("/bookmarks")}>Bookmarks</Button>
+          </Box>
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>
               <Button onClick={toggleColorMode}>
