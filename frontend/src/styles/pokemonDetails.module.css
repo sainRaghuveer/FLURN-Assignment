@@ -1,8 +1,8 @@
 .pokemon{
     padding: 5px;
     margin: 50px auto;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-white-color);
+    border: 1px solid rgb(6, 54, 54);
+    color: black;
     padding: 15px;
     width: 85%;
 }
@@ -13,12 +13,18 @@
     gap: 20px;
 }
 
+.container{
+    border: 1px solid teal;
+    padding: 20px;
+}
+
 .pokemon-pic{
     flex: 1;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     position: relative;
+    border: 1px solid green;
 }
 
 .pokemon-pic>img{
@@ -38,6 +44,7 @@
 
 .pokemon-details{
     flex: 2;
+    border: 1px solid blue;
 }
 
 .pokemon-details>h1:first-child{
@@ -84,8 +91,9 @@
 }
 
 #search-input{
+    width: 20%;
     font-size: 18px;
-    padding: 5px;
+    padding: 10px;
     margin-top: 20px;
     margin-left: 70%;
 }

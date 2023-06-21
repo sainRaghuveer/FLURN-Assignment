@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 
 import style from '../styles/pokemonDetails.module.css';
+import { Image, Input, Table, Tbody, Td, Th, Tr } from '@chakra-ui/react';
 
 function DetailsPage() {
 
@@ -21,7 +22,7 @@ function DetailsPage() {
     console.log(pokemon_name);
 		setLoading(true);
 		try {
-			const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon_name}`)
+			const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon_name || searchQuery}`)
 			console.log(res);
 			setPokemon(res.data);
 			setLoading(false)
@@ -59,51 +60,51 @@ function DetailsPage() {
 		}, 5000);
 	}, [search])
 
-	return loading ? <h1>Loading...</h1> : (<>
-		<input id={style["search-input"]} placeholder='search Pokemon' onChange={(e) => setSearch(e.currentTarget.value)} />
+	return loading ? <h1>Loading...</h1> : (<div>
+		<Input id={style["search-input"]} placeholder='search Pokemon...' onChange={(e) => setSearch(e.currentTarget.value)} />
 		<article className={style.pokemon}>
-			<div>
+			<div className={style["container"]}>
 				<aside className={style["pokemon-pic"]}>
-					<img title={pokemon?.name + " front deafult"} src={pokemon?.sprites?.front_default} alt={pokemon?.name + " front deafult"} />
-					<img title={pokemon?.name + " front shiny"} src={pokemon?.sprites?.front_shiny} alt={pokemon?.name + " front shiny"} />
-					<img title={pokemon?.name + " back shiny"} src={pokemon?.sprites?.back_shiny} alt={pokemon?.name + " back shiny"} />
-					<img title={pokemon?.name + " back default"} src={pokemon?.sprites?.back_default} alt={pokemon?.name + " back default"} />
+					<Image title={pokemon?.name + " front deafult"} src={pokemon?.sprites?.front_default} alt={pokemon?.name + " front deafult"} />
+					<Image title={pokemon?.name + " front shiny"} src={pokemon?.sprites?.front_shiny} alt={pokemon?.name + " front shiny"} />
+					<Image title={pokemon?.name + " back shiny"} src={pokemon?.sprites?.back_shiny} alt={pokemon?.name + " back shiny"} />
+					<Image title={pokemon?.name + " back default"} src={pokemon?.sprites?.back_default} alt={pokemon?.name + " back default"} />
 				</aside>
 				<div className={style["pokemon-details"]}>
 					<h1>{pokemon?.name} <span onClick={handleDoFavorite}>{favoriteList.includes(pokemon?.name) ? <AiFillHeart /> : <AiOutlineHeart />}</span></h1>
 					<div className={style["pokemon-tables"]}>
-						<table>
-							<tbody>
-								<tr>
-									<th><bdi>ID</bdi></th>
-									<td>{pokemon?.id}</td>
-								</tr>
-								<tr>
-									<th><bdi>Base Experience</bdi></th>
-									<td>{pokemon?.base_experience}</td>
-								</tr>
-								<tr>
-									<th><bdi>Type</bdi></th>
-									<td>
+						<Table>
+							<Tbody>
+								<Tr>
+									<Th><bdi>ID</bdi></Th>
+									<Td>{pokemon?.id}</Td>
+								</Tr>
+								<Tr>
+									<Th><bdi>Base Experience</bdi></Th>
+									<Td>{pokemon?.base_experience}</Td>
+								</Tr>
+								<Tr>
+									<Th><bdi>Type</bdi></Th>
+									<Td>
 										{
 											pokemon?.types?.map(type => type.type.name).join(", ")
 										}
-									</td>
-								</tr>
-								<tr>
-									<th><bdi>HP</bdi></th>
-									<td>{pokemon?.stats && pokemon?.stats[0]?.base_stat}</td>
-								</tr>
-								<tr>
-									<th><bdi>Attack</bdi></th>
-									<td>{pokemon?.stats && pokemon?.stats[1]?.base_stat}</td>
-								</tr>
-								<tr>
-									<th><bdi>Defense</bdi></th>
-									<td>{pokemon?.stats && pokemon?.stats[2]?.base_stat}</td>
-								</tr>
-							</tbody>
-						</table>
+									</Td>
+								</Tr>
+								<Tr>
+									<Th><bdi>HP</bdi></Th>
+									<Td>{pokemon?.stats && pokemon?.stats[0]?.base_stat}</Td>
+								</Tr>
+								<Tr>
+									<Th><bdi>Attack</bdi></Th>
+									<Td>{pokemon?.stats && pokemon?.stats[1]?.base_stat}</Td>
+								</Tr>
+								<Tr>
+									<Td><bdi>Defense</bdi></Td>
+									<Td>{pokemon?.stats && pokemon?.stats[2]?.base_stat}</Td>
+								</Tr>
+							</Tbody>
+						</Table>
 						<table>
 							<tbody>
 								<tr>
@@ -143,7 +144,7 @@ function DetailsPage() {
 				<p><bdi>Moves</bdi> {pokemon?.moves?.map(el => el.move.name).join(", ")}</p>
 			</div>
 		</article>
-	</>
+	</div>
 	)
 }
 
