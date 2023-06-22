@@ -14,6 +14,34 @@ const ListingPage = () => {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
 
+  const [abilities, setAbilities] = useState([]);
+  const [characteristics, setCharacteristics] = useState([]);
+  const [groups, setGroups] = useState([]);
+  const [habitats, setHabitats] = useState([]);
+  const [locations, setLocations] = useState([]);
+  const [species, setSpecies] = useState([]);
+
+  const fetchFilterOptions = async () => {
+    try {
+      const abilitiesResponse = await fetch('https://pokeapi.co/api/v2/ability');
+      const abilitiesData = await abilitiesResponse.json();
+      setAbilities(abilitiesData.results);
+
+      const characteristicsResponse = await fetch('https://pokeapi.co/api/v2/characteristic');
+      const characteristicsData = await characteristicsResponse.json();
+      setCharacteristics(characteristicsData.results);
+
+      // Fetch and set other filter options similarly
+
+    } catch (error) {
+      setError('Error occurred while fetching filter options');
+    }
+  };
+
+  useEffect(() => {
+    fetchFilterOptions();
+  }, []);
+
   const fetchPokemonList = async (page) => {
     setIsLoading(true);
     setError(null);
@@ -58,7 +86,7 @@ const ListingPage = () => {
   }, [isLoading, error]);
 
 
-  return isLoading ?<SkeletonE/>: (
+  return isLoading ? <SkeletonE /> : (
     <Box display="grid" gap={"20px"} gridTemplateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)", xl: "repeat(4, 1fr)", "2xl": "repeat(4, 1fr)" }}>
       {pokemonList.map((pokemon, index) => (
         // console.log(pokemon)
