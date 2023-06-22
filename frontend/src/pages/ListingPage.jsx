@@ -86,7 +86,7 @@ const ListingPage = () => {
   };
 
   useEffect(() => {
-    // Adjust content area width when the window is resized
+    // Adjusting content area width when the window is resized
     const handleResize = () => {
       if (contentRef.current) {
         const sidebarWidth = 20; // Width of the sidebar in percentage
@@ -106,8 +106,8 @@ const ListingPage = () => {
     <Flex>
       <Box width="17%" padding={4} height="100vh" overflowY="auto" marginTop={"60px"} position="fixed" left={0} zIndex={1}>
         <FilterOption
-          abilities={['overgrow', 'chlorophyll', 'blaze', 'solar-power','torrent','rain-dish']} // Replace with your abilities data
-          characteristics={['characteristic1', 'characteristic2', 'characteristic3']} // Replace with your characteristics data
+          abilities={['overgrow', 'chlorophyll', 'blaze', 'solar-power','torrent','rain-dish']} 
+          characteristics={['characteristic1', 'characteristic2', 'characteristic3']} 
           selectedAbilities={selectedAbilities}
           selectedCharacteristics={selectedCharacteristics}
           onAbilityFilter={handleAbilityFilter}
