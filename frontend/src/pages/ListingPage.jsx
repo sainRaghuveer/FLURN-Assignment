@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import PokemonCard from '../components/PokemonCard';
+import "../styles/ListingPage.css"
+import { Box } from '@chakra-ui/react';
 
 const ListingPage = () => {
   const [pokemonList, setPokemonList] = useState([]);
@@ -53,13 +55,12 @@ const ListingPage = () => {
 
 
   return (
-    <div>
-      <h1>Listing Page</h1>
+    <Box display="grid" gap={"20px"} gridTemplateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)", xl: "repeat(4, 1fr)", "2xl": "repeat(4, 1fr)" }}>
       {pokemonList.map((pokemon, index) => (
         // console.log(pokemon)
         <PokemonCard key={`${pokemon.name}+${index}`} pokemonName={pokemon.name} PokemonUrl={pokemon.url} pokemon={pokemon}/>
       ))}
-    </div>
+    </Box>
   );
 };
 

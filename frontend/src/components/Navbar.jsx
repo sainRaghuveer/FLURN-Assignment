@@ -43,9 +43,9 @@ export default function Navbar() {
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <Box>FLURN</Box>
           <Box style={{display:"flex", justifyContent:"space-evenly", width:"40%"}}>
-            <Button onClick={()=>navigate("/")}>Search</Button>
-            <Button onClick={()=>navigate("/list")}>List</Button>
-            <Button onClick={()=>navigate("/bookmarks")}>Bookmarks</Button>
+            <Button onClick={()=>navigate("/")} bg={"gray"}>Search</Button>
+            <Button onClick={()=>navigate("/list")} bg={"gray"}>List</Button>
+            <Button onClick={()=>navigate("/bookmarks")} bg={"gray"}>Bookmarks</Button>
           </Box>
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>

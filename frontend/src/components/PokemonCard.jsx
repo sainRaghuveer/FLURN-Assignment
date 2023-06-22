@@ -12,11 +12,8 @@ const PokemonCard = ({ pokemonName, PokemonUrl, pokemon }) => {
     <>
       <Link to={`/pokemon/${pokemon.name}`}>
         <div className="pokemon-card">
+          <Image src={url} alt={pokemon.name} width={"100%"} height={"90%"}></Image>
           <h3>{pokemonName}</h3>
-          <Image src={url} alt={pokemon.name}></Image>
-          {/* <p>Height: {pokemon.height}</p>
-      <p>Weight: {pokemon.weight}</p> */}
-          {/* Display more details as needed */}
         </div>
       </Link>
     </>

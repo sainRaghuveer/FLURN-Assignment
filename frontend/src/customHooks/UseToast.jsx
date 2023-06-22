@@ -8,8 +8,8 @@ const UseToast = () => {
                title:`${title}`,
                status:`${status}`,
                position: 'top',
-               duration: 3000
-          })
+               duration: 4000
+          });
      }
 }
 
