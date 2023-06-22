@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import PokemonCard from '../components/PokemonCard';
 import "../styles/ListingPage.css"
-import { Box, Spinner } from '@chakra-ui/react';
+import { Box, Flex, Spinner } from '@chakra-ui/react';
 import { SkeletonE } from '../components/Skeleton';
+import FilterOption from '../components/FilterOption';
 
 const ListingPage = () => {
   const [pokemonList, setPokemonList] = useState([]);
@@ -14,33 +15,15 @@ const ListingPage = () => {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const [abilities, setAbilities] = useState([]);
-  const [characteristics, setCharacteristics] = useState([]);
+  const [selectedAbilities, setSelectedAbilities] = useState([]);
+  const [selectedCharacteristics, setSelectedCharacteristics] = useState([]);
   const [groups, setGroups] = useState([]);
   const [habitats, setHabitats] = useState([]);
   const [locations, setLocations] = useState([]);
   const [species, setSpecies] = useState([]);
 
-  const fetchFilterOptions = async () => {
-    try {
-      const abilitiesResponse = await fetch('https://pokeapi.co/api/v2/ability');
-      const abilitiesData = await abilitiesResponse.json();
-      setAbilities(abilitiesData.results);
+  const contentRef = useRef(null);
 
-      const characteristicsResponse = await fetch('https://pokeapi.co/api/v2/characteristic');
-      const characteristicsData = await characteristicsResponse.json();
-      setCharacteristics(characteristicsData.results);
-
-      // Fetch and set other filter options similarly
-
-    } catch (error) {
-      setError('Error occurred while fetching filter options');
-    }
-  };
-
-  useEffect(() => {
-    fetchFilterOptions();
-  }, []);
 
   const fetchPokemonList = async (page) => {
     setIsLoading(true);
@@ -49,7 +32,10 @@ const ListingPage = () => {
     try {
       setIsLoading(true);
       setTimeout(async () => {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=10&offset=${(page - 1) * 10}`);
+        // const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=10&offset=${(page - 1) * 10}`);
+        const abilityFilter = selectedAbilities.length > 0 ? `&ability=${selectedAbilities[0]}` : '';
+
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=10&offset=${(page - 1) * 10}${abilityFilter}`);
         if (response.ok) {
           const data = await response.json();
           console.log("data", data)
@@ -85,14 +71,56 @@ const ListingPage = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isLoading, error]);
 
+  const handleAbilityFilter = (abilities) => {
+    setSelectedAbilities(abilities);
+    setPokemonList([]);
+    setCurrentPage(1);
+    fetchPokemonList(1);
+  };
 
-  return isLoading ? <SkeletonE /> : (
-    <Box display="grid" gap={"20px"} gridTemplateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)", xl: "repeat(4, 1fr)", "2xl": "repeat(4, 1fr)" }}>
-      {pokemonList.map((pokemon, index) => (
-        // console.log(pokemon)
-        <PokemonCard key={`${pokemon.name}+${index}`} pokemonName={pokemon.name} PokemonUrl={pokemon.url} pokemon={pokemon} />
-      ))}
-    </Box>
+  const handleCharacteristicFilter = (characteristics) => {
+    setSelectedCharacteristics(characteristics);
+    setPokemonList([]);
+    setCurrentPage(1);
+    fetchPokemonList(1);
+  };
+
+  useEffect(() => {
+    // Adjust content area width when the window is resized
+    const handleResize = () => {
+      if (contentRef.current) {
+        const sidebarWidth = 20; // Width of the sidebar in percentage
+        const windowWidth = window.innerWidth;
+        const contentWidth = windowWidth * (100 - sidebarWidth) / 100;
+        contentRef.current.style.width = `${contentWidth}px`;
+      }
+    };
+
+    handleResize(); // Set initial width
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+
+  return (
+    <Flex>
+      <Box width="17%" padding={4} height="100vh" overflowY="auto" marginTop={"60px"} position="fixed" left={0} zIndex={1}>
+        <FilterOption
+          abilities={['overgrow', 'chlorophyll', 'blaze', 'solar-power','torrent','rain-dish']} // Replace with your abilities data
+          characteristics={['characteristic1', 'characteristic2', 'characteristic3']} // Replace with your characteristics data
+          selectedAbilities={selectedAbilities}
+          selectedCharacteristics={selectedCharacteristics}
+          onAbilityFilter={handleAbilityFilter}
+          onCharacteristicFilter={handleCharacteristicFilter}
+        />
+      </Box>
+      {isLoading ? <SkeletonE /> : <Box ref={contentRef} marginLeft={"20%"} marginTop={"60px"} width={"82%"} padding={4} display="grid" gap={"20px"} gridTemplateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)", xl: "repeat(4, 1fr)", "2xl": "repeat(4, 1fr)" }} overflowY="auto">
+        {pokemonList.map((pokemon, index) => (
+          // console.log(pokemon)
+          <PokemonCard key={`${pokemon.name}+${index}`} pokemonName={pokemon.name} PokemonUrl={pokemon.url} pokemon={pokemon} />
+        ))}
+      </Box>}
+    </Flex>
   );
 };
 

@@ -108,6 +108,42 @@ export const SkeletonE = () => {
         color='white'
       >
       </Skeleton>
+      <Skeleton
+        height='250px'
+        isLoaded={isLoaded}
+        mb={"10px"}
+        fadeDuration={4}
+        bg='blue.500'
+        color='white'
+      >
+      </Skeleton>
+      <Skeleton
+        height='250px'
+        isLoaded={isLoaded}
+        mb={"10px"}
+        fadeDuration={4}
+        bg='blue.500'
+        color='white'
+      >
+      </Skeleton>
+      <Skeleton
+        height='250px'
+        isLoaded={isLoaded}
+        mb={"10px"}
+        fadeDuration={4}
+        bg='blue.500'
+        color='white'
+      >
+      </Skeleton>
+      <Skeleton
+        height='250px'
+        isLoaded={isLoaded}
+        mb={"10px"}
+        fadeDuration={4}
+        bg='blue.500'
+        color='white'
+      >
+      </Skeleton>
     </Stack>
   )
 }

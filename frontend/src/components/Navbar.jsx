@@ -39,13 +39,20 @@ export default function Navbar() {
   const navigate = useNavigate();
   return (
     <>
-      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+      <Box
+        bg={useColorModeValue('gray.100', 'gray.900')}
+        px={4}
+        position="fixed"
+        top={0}
+        left={0}
+        right={0}
+        zIndex={999}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <Box>FLURN</Box>
-          <Box style={{display:"flex", justifyContent:"space-evenly", width:"40%"}}>
-            <Button onClick={()=>navigate("/")} bg={"gray"}>Search</Button>
-            <Button onClick={()=>navigate("/list")} bg={"gray"}>List</Button>
-            <Button onClick={()=>navigate("/bookmarks")} bg={"gray"}>Bookmarks</Button>
+          <Box style={{ display: "flex", justifyContent: "space-evenly", width: "40%" }}>
+            <Button onClick={() => navigate("/")} bg={"gray"}>Search</Button>
+            <Button onClick={() => navigate("/list")} bg={"gray"}>List</Button>
+            <Button onClick={() => navigate("/bookmarks")} bg={"gray"}>Bookmarks</Button>
           </Box>
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>

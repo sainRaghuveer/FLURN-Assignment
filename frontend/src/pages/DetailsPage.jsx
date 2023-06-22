@@ -24,14 +24,29 @@ function DetailsPage() {
     setLoading(true);
     try {
       setTimeout(async () => {
-        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${searchQuery || pokemonName}`)
-        console.log(res);
-        setPokemon(res.data);
-        setLoading(false)
-      }, 2000)
+        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${searchQuery || pokemonName}`)
+        if (res.ok) {
+          const response = await res.json();
+          console.log(response);
+          setPokemon(response);
+          setLoading(false)
+        } else {
+          toastMsg({
+            title: "Something went wrong or pokemon doesn't exist with this name",
+            status: "warning"
+          });
+        }
+
+      }, 1000)
+      setLoading(false);
     } catch (error) {
       console.log('error:', error)
-      if (!searchQuery) alert(error.message);
+      if (!searchQuery) {
+        toastMsg({
+          title: `${error.message}`,
+          status: "error"
+        });
+      }
       setLoading(false);
     }
     getFavorites();
@@ -68,7 +83,7 @@ function DetailsPage() {
     if (timoutRef.current) clearTimeout(timoutRef.current);
     timoutRef.current = setTimeout(() => {
       getPokemon(search)
-    }, 5000);
+    }, 2000);
   }, [search])
 
   return loading ? <Spinner size="xl" color='red.500' thickness='6px' speed='0.65s' /> : (<div>
@@ -82,7 +97,7 @@ function DetailsPage() {
           <Image title={pokemon?.name + " back default"} src={pokemon?.sprites?.back_default} alt={pokemon?.name + " back default"} />
         </aside>
         <div className={style["pokemon-details"]}>
-          <h1 style={{ fontSize: "20px" }}>{pokemon?.name} <span onClick={handleDoFavorite}>{favoriteList.includes(pokemon?.name) ? <FaBookmark /> : <FaRegBookmark />}</span></h1>
+          <h1 style={{ fontSize: "25px", fontWeight:"bold" }}>{pokemon?.name} <span onClick={handleDoFavorite}>{favoriteList.includes(pokemon?.name) ? <FaBookmark /> : <FaRegBookmark />}</span></h1>
           <div className={style["pokemon-tables"]}>
             <Table>
               <Tbody>
