@@ -13,7 +13,6 @@
 }
 
 .container{
-    border: 1px solid teal;
     padding: 20px;
 }
 
@@ -43,7 +42,7 @@
 
 .pokemon-details{
     flex: 2;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 
 .pokemon-details>h1:first-child{

@@ -38,3 +38,13 @@
 .pokemon:hover h3 {
     color: rgb(89, 221, 221)
 }
+
+.emptyBookmark{
+    width: 30%;
+    margin: auto;
+    height: 350px;
+}
+
+.emptyBookmark>Image{
+    width: 100%;
+}

@@ -19,7 +19,7 @@ const SearchPage = () => {
         // If the API call is successful, redirecting to the listing page with the search query parameter
         setLoading(false);
         toastMsg({
-          title: "Pokemon list generated successfully",
+          title: "Welcome to Pokemon Page",
           status: "success"
         });
         navigate(`/list?search=${pokemonName}`);

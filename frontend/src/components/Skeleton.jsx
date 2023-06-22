@@ -1,9 +1,113 @@
-import React from 'react'
-
-const Skeleton = () => {
+import { Skeleton, SkeletonCircle, SkeletonText, Stack, Box } from '@chakra-ui/react';
+import React, { useState } from "react"
+export const SkeletonE = () => {
+  const [isLoaded, setIsLoaded] = useState(false)
   return (
-    <div>Skeleton</div>
+    <Stack padding={4} spacing={1} marginLeft={"10px"} marginRight={"10px"} margin={"auto"} display="grid" gap={"10px"} gridTemplateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)", xl: "repeat(4, 1fr)", "2xl": "repeat(4, 1fr)" }}>
+      <Skeleton
+        height='250px'
+        isLoaded={isLoaded} >
+      </Skeleton>
+      <Skeleton
+        height='250px'
+        isLoaded={isLoaded}
+        mb={"10px"}
+        bg='green.500'
+        color='white'
+        fadeDuration={1}
+      >
+      </Skeleton>
+      <Skeleton
+        height='250px'
+        isLoaded={isLoaded}
+        mb={"10px"}
+        fadeDuration={4}
+        bg='blue.500'
+        color='white'
+      >
+      </Skeleton>
+      <Skeleton
+        height='250px'
+        isLoaded={isLoaded}
+        mb={"10px"}
+        fadeDuration={4}
+        bg='blue.500'
+        color='white'
+      >
+      </Skeleton>
+      <Skeleton
+        height='250px'
+        isLoaded={isLoaded}
+        mb={"10px"}
+        fadeDuration={4}
+        bg='blue.500'
+        color='white'
+      >
+      </Skeleton>
+
+      <Skeleton
+        height='250px'
+        isLoaded={isLoaded}
+        mb={"10px"}
+        fadeDuration={4}
+        bg='blue.500'
+        color='white'
+      >
+      </Skeleton>
+      <Skeleton
+        height='250px'
+        isLoaded={isLoaded}
+        mb={"10px"}
+        fadeDuration={4}
+        bg='blue.500'
+        color='white'
+      >
+      </Skeleton>
+      <Skeleton
+        height='250px'
+        isLoaded={isLoaded}
+        mb={"10px"}
+        fadeDuration={4}
+        bg='blue.500'
+        color='white'
+      >
+      </Skeleton>
+      <Skeleton
+        height='250px'
+        isLoaded={isLoaded}
+        mb={"10px"}
+        fadeDuration={4}
+        bg='blue.500'
+        color='white'
+      >
+      </Skeleton>
+      <Skeleton
+        height='250px'
+        isLoaded={isLoaded}
+        mb={"10px"}
+        fadeDuration={4}
+        bg='blue.500'
+        color='white'
+      >
+      </Skeleton>
+      <Skeleton
+        height='250px'
+        isLoaded={isLoaded}
+        mb={"10px"}
+        fadeDuration={4}
+        bg='blue.500'
+        color='white'
+      >
+      </Skeleton>
+      <Skeleton
+        height='250px'
+        isLoaded={isLoaded}
+        mb={"10px"}
+        fadeDuration={4}
+        bg='blue.500'
+        color='white'
+      >
+      </Skeleton>
+    </Stack>
   )
 }
-
-export default Skeleton
