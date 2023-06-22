@@ -23,13 +23,13 @@ function BookmarksPage() {
     if (index !== -1) {
       favoriteList.splice(index, 1);
       toastMsg({
-        title:"Removed from favorites",
+        title:"Pokemon Removed from favorites",
         status:"warning"
       });
     } else {
       favoriteList.push(pokemon?.name);
       toastMsg({
-        title:"Added to favorites",
+        title:"Pokemon Added to favorites",
         status:"success"
       });
     }
