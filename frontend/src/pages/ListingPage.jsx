@@ -5,6 +5,7 @@ import "../styles/ListingPage.css"
 import { Box, Flex, Spinner } from '@chakra-ui/react';
 import { SkeletonE } from '../components/Skeleton';
 import FilterOption from '../components/FilterOption';
+import { abilityArr } from '../utils/data';
 
 const ListingPage = () => {
   const [pokemonList, setPokemonList] = useState([]);
@@ -106,7 +107,7 @@ const ListingPage = () => {
     <Flex>
       <Box width="17%" padding={4} height="100vh" overflowY="auto" marginTop={"60px"} position="fixed" left={0} zIndex={1}>
         <FilterOption
-          abilities={['overgrow', 'chlorophyll', 'blaze', 'solar-power','torrent','rain-dish']} 
+          abilities={abilityArr} 
           characteristics={['characteristic1', 'characteristic2', 'characteristic3']} 
           selectedAbilities={selectedAbilities}
           selectedCharacteristics={selectedCharacteristics}

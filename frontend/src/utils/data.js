@@ -1,0 +1,6 @@
+export const abilityArr=['overgrow','chlorophyll','blaze','solar-power','torrent','rain-dish','shield-dust','run-away','shed-skin', 'metapod']
+export const characteristicsArr=[]
+export const groupArr=[]
+export const habitatArr=[]
+export const locationArr=[]
+export const SpeciesArr=[]
