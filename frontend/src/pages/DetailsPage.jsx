@@ -128,38 +128,38 @@ function DetailsPage() {
                 </Tr>
               </Tbody>
             </Table>
-            <table>
-              <tbody>
-                <tr>
-                  <th><bdi>Special-Attack</bdi></th>
-                  <td>{pokemon?.stats && pokemon?.stats[3]?.base_stat}</td>
-                </tr>
-                <tr>
-                  <th><bdi>Special-Defense</bdi></th>
-                  <td>{pokemon?.stats && pokemon?.stats[4]?.base_stat}</td>
-                </tr>
-                <tr>
-                  <th><bdi>Speed</bdi></th>
-                  <td>{pokemon?.stats && pokemon?.stats[5]?.base_stat}</td>
-                </tr>
-                <tr>
-                  <th><bdi>Abilities</bdi></th>
-                  <td>
+            <Table>
+              <Tbody>
+                <Tr>
+                  <Th><bdi>Special-Attack</bdi></Th>
+                  <Td>{pokemon?.stats && pokemon?.stats[3]?.base_stat}</Td>
+                </Tr>
+                <Tr>
+                  <Th><bdi>Special-Defense</bdi></Th>
+                  <Td>{pokemon?.stats && pokemon?.stats[4]?.base_stat}</Td>
+                </Tr>
+                <Tr>
+                  <Th><bdi>Speed</bdi></Th>
+                  <Td>{pokemon?.stats && pokemon?.stats[5]?.base_stat}</Td>
+                </Tr>
+                <Tr>
+                  <Th><bdi>Abilities</bdi></Th>
+                  <Td>
                     {
                       pokemon?.abilities?.map(el => el.ability.name).join(", ")
                     }
-                  </td>
-                </tr>
-                <tr>
-                  <th><bdi>Weight</bdi></th>
-                  <td>{pokemon?.weight}</td>
-                </tr>
-                <tr>
-                  <th><bdi>Height</bdi></th>
-                  <td>{pokemon?.height}</td>
-                </tr>
-              </tbody>
-            </table>
+                  </Td>
+                </Tr>
+                <Tr>
+                  <Th><bdi>Weight</bdi></Th>
+                  <Td>{pokemon?.weight}</Td>
+                </Tr>
+                <Tr>
+                  <Th><bdi>Height</bdi></Th>
+                  <Td>{pokemon?.height}</Td>
+                </Tr>
+              </Tbody>
+            </Table>
           </div>
         </div>
       </div>
