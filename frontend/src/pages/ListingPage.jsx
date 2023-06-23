@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import PokemonCard from '../components/PokemonCard';
 import "../styles/ListingPage.css"
-import { Box, Flex, Spinner } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import { SkeletonE } from '../components/Skeleton';
 import FilterOption from '../components/FilterOption';
 import { SpeciesArr, abilityArr } from '../utils/data';

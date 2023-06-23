@@ -1,14 +1,11 @@
-import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { FaRegBookmark, FaBookmark } from "react-icons/fa"
-
 import style from '../styles/pokemonDetails.module.css';
 import { Heading, Image, Input, Spinner, Table, Tbody, Td, Th, Tr } from '@chakra-ui/react';
 import UseToast from '../customHooks/UseToast';
 
 function DetailsPage() {
-
   const [favoriteList, setFavoriteList] = useState([]);
   console.log('favoriteList:', favoriteList)
   const [pokemon, setPokemon] = useState({});
