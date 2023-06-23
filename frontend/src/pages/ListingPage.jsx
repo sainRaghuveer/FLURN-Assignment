@@ -93,7 +93,7 @@ const ListingPage = () => {
 
   return (
     <Flex>
-      <Box width="17%" padding={4} height="100vh" overflowY="auto" marginTop={"60px"} position="fixed" left={0} zIndex={1}>
+      <Box width={"17%"} padding={4} height="100vh" overflowY="auto" marginTop={"60px"} position="fixed" left={0} zIndex={1}>
         <FilterOption
           filteredData={filteredData}
           abilities={abilityArr}
