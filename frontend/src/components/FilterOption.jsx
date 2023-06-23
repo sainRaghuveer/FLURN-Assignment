@@ -1,33 +1,55 @@
 import React, { useState } from 'react';
 import { Checkbox, Button, VStack } from '@chakra-ui/react';
+import axios from "axios"
 
-const FilterOptions = ({ abilities, characteristics, onAbilityFilter, onCharacteristicFilter }) => {
-  const [selectedAbilities, setSelectedAbilities] = useState([]);
-  const [selectedCharacteristics, setSelectedCharacteristics] = useState([]);
+const FilterOptions = ({ abilities, species, onAbilityFilter, onSpeciesFilter, filteredData }) => {
+  // const [selectedAbilities, setSelectedAbilities] = useState([]);
+  // const [selectedSpecies, setSelectedSpecies] = useState([]);
 
-  const handleAbilityChange = (event) => {
-    const { value, checked } = event.target;
+  // const handleAbilityChange = (event) => {
+  //   const { value, checked } = event.target;
 
-    if (checked) {
-      setSelectedAbilities((prevAbilities) => [...prevAbilities, value]);
-    } else {
-      setSelectedAbilities((prevAbilities) => prevAbilities.filter((ability) => ability !== value));
+  //   if (checked) {
+  //     setSelectedAbilities((prevAbilities) => [...prevAbilities, value]);
+  //   } else {
+  //     setSelectedAbilities((prevAbilities) => prevAbilities.filter((ability) => ability !== value));
+  //   }
+  // };
+
+  // const handleSpeciesChange = (event) => {
+  //   const { value, checked } = event.target;
+
+  //   if (checked) {
+  //     setSelectedSpecies((prevSpecies) => [...prevSpecies, value]);
+  //   } else {
+  //     selectedSpecies((prevSpecies) => prevSpecies.filter((char) => char !== value));
+  //   }
+  // };
+
+  const getDatas = async (ids) => {
+    try {
+      const reqs = ids.map(id => axios.get(`https://pokeapi.co/api/v2/ability/${id}/`))
+      const res = await Promise.allSettled(reqs);
+      let values = []
+      res.forEach(el => {
+        if (el.status === 'fulfilled') values = [...values, ...el.value.data.pokemon];
+      })
+      values = values.map(el => el.pokemon);
+      filteredData(values);
+      console.log('values', values)
+    } catch (error) {
+      console.log('error', error);
     }
-  };
-
-  const handleCharacteristicChange = (event) => {
-    const { value, checked } = event.target;
-
-    if (checked) {
-      setSelectedCharacteristics((prevCharacteristics) => [...prevCharacteristics, value]);
-    } else {
-      setSelectedCharacteristics((prevCharacteristics) => prevCharacteristics.filter((char) => char !== value));
-    }
-  };
+  }
 
   const applyFilter = () => {
-    onAbilityFilter(selectedAbilities);
-    onCharacteristicFilter(selectedCharacteristics);
+    const selectedAbilities = [];
+    document.querySelectorAll('input[type="checkbox"]').forEach(el => {
+      if (el.checked) selectedAbilities.push(el.value);
+    });
+    getDatas(selectedAbilities);
+    // onAbilityFilter(selectedAbilities);  
+    // onSpeciesFilter(selectedSpecies);
   };
 
   return (
@@ -36,29 +58,27 @@ const FilterOptions = ({ abilities, characteristics, onAbilityFilter, onCharacte
       {abilities.map((ability) => (
         <Checkbox
           key={ability}
-          value={ability}
-          isChecked={selectedAbilities.includes(ability)}
-          onChange={handleAbilityChange}
+          value={ability.id}
         >
-          {ability}
+          {ability.name}
         </Checkbox>
       ))}
-      
-      {characteristics && characteristics.length > 0 && (
+
+      {/* {species && species.length > 0 && (
         <>
-          <h3>Filter by Characteristics:</h3>
-          {characteristics.map((characteristic) => (
+          <h3>Filter by Species:</h3>
+          {species.map((species) => (
             <Checkbox
-              key={characteristic}
-              value={characteristic}
-              isChecked={selectedCharacteristics.includes(characteristic)}
-              onChange={handleCharacteristicChange}
+              key={species}
+              value={species.id}
+              isChecked={selectedSpecies.includes(species)}
+              onChange={handleSpeciesChange}
             >
-              {characteristic}
+              {species.name}
             </Checkbox>
           ))}
         </>
-      )}
+      )} */}
 
       <Button colorScheme="blue" onClick={applyFilter}>Apply Filter</Button>
     </VStack>

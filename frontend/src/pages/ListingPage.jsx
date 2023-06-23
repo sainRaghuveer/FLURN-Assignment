@@ -5,7 +5,7 @@ import "../styles/ListingPage.css"
 import { Box, Flex, Spinner } from '@chakra-ui/react';
 import { SkeletonE } from '../components/Skeleton';
 import FilterOption from '../components/FilterOption';
-import { abilityArr } from '../utils/data';
+import { SpeciesArr, abilityArr } from '../utils/data';
 
 const ListingPage = () => {
   const [pokemonList, setPokemonList] = useState([]);
@@ -26,6 +26,11 @@ const ListingPage = () => {
   const contentRef = useRef(null);
 
 
+  const filteredData = (values)=>{
+    setPokemonList(values)
+  }
+
+
   const fetchPokemonList = async (page) => {
     setIsLoading(true);
     setError(null);
@@ -39,7 +44,6 @@ const ListingPage = () => {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=10&offset=${(page - 1) * 10}${abilityFilter}`);
         if (response.ok) {
           const data = await response.json();
-          console.log("data", data)
           setPokemonList((prevList) => [...prevList, ...data.results]);
           setCurrentPage(page);
           setIsLoading(false);
@@ -79,8 +83,8 @@ const ListingPage = () => {
     fetchPokemonList(1);
   };
 
-  const handleCharacteristicFilter = (characteristics) => {
-    setSelectedCharacteristics(characteristics);
+  const handleSpeciesFilter = (characteristics) => {
+    setSpecies(species);
     setPokemonList([]);
     setCurrentPage(1);
     fetchPokemonList(1);
@@ -107,20 +111,20 @@ const ListingPage = () => {
     <Flex>
       <Box width="17%" padding={4} height="100vh" overflowY="auto" marginTop={"60px"} position="fixed" left={0} zIndex={1}>
         <FilterOption
-          abilities={abilityArr} 
-          characteristics={['characteristic1', 'characteristic2', 'characteristic3']} 
+          filteredData={filteredData}
+          abilities={abilityArr}
+          species={SpeciesArr}
           selectedAbilities={selectedAbilities}
-          selectedCharacteristics={selectedCharacteristics}
+          selectedSpecies={species}
           onAbilityFilter={handleAbilityFilter}
-          onCharacteristicFilter={handleCharacteristicFilter}
+          onSpeciesFilter={handleSpeciesFilter}
         />
       </Box>
-      {isLoading ? <SkeletonE /> : <Box ref={contentRef} marginLeft={"20%"} marginTop={"60px"} width={"82%"} padding={4} display="grid" gap={"20px"} gridTemplateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)", xl: "repeat(4, 1fr)", "2xl": "repeat(4, 1fr)" }} overflowY="auto">
-        {pokemonList.map((pokemon, index) => (
-          // console.log(pokemon)
+      <Box ref={contentRef} marginLeft={"20%"} marginTop={"60px"} width={"82%"} padding={4} display="grid" gap={"20px"} gridTemplateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)", xl: "repeat(4, 1fr)", "2xl": "repeat(4, 1fr)" }} overflowY="auto">
+        {isLoading ? <SkeletonE /> : pokemonList.map((pokemon, index) => (
           <PokemonCard key={`${pokemon.name}+${index}`} pokemonName={pokemon.name} PokemonUrl={pokemon.url} pokemon={pokemon} />
         ))}
-      </Box>}
+      </Box>
     </Flex>
   );
 };
