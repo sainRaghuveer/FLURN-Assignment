@@ -1,5 +1,5 @@
-import { Skeleton, VStack, Box } from '@chakra-ui/react';
-import React, { useState } from "react";
+import { Skeleton, Box } from '@chakra-ui/react';
+import React from "react";
 import uniqid from 'uniqid';
 export const SkeletonE = () => {
     return (

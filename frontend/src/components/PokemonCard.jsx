@@ -5,9 +5,7 @@ import "../styles/PokemonCard.css";
 
 const PokemonCard = ({ pokemonName, PokemonUrl, pokemon }) => {
   let arr = PokemonUrl.split('/')
-  console.log(arr);
   let url = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${PokemonUrl.split('/')[6]}.png`
-  console.log(url);
   return (
     <>
       <Link to={`/pokemon/${pokemon.name}`}>
