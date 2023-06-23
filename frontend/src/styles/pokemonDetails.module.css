@@ -5,18 +5,14 @@
     padding: 15px;
     width: 90%;
 }
-
 .pokemon>div:first-child {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
-
 .container {
     padding: 20px;
-    border: 1px solid red;
 }
-
 .pokemon-pic {
     flex: 1;
     display: grid;
@@ -25,13 +21,11 @@
     position: relative;
     border: 1px solid green;
 }
-
 .pokemon-pic>img {
     width: 100%;
     backdrop-filter: blur(5px);
     cursor: pointer;
 }
-
 .pokemon-pic>img:hover {
     position: absolute;
     top: 0;
@@ -40,12 +34,9 @@
     height: 100%;
     z-index: 5;
 }
-
 .pokemon-details {
     flex: 2;
-    /* border: 1px solid blue; */
 }
-
 .pokemon-details>h1:first-child {
     margin: 5px 0px 10px;
     text-align: center;
@@ -53,42 +44,33 @@
     text-transform: capitalize;
     position: relative;
 }
-
 .pokemon-details>h1:first-child>span {
     position: absolute;
     top: 0;
     right: 0;
     cursor: pointer;
 }
-
 .pokemon-tables {
     display: flex;
     gap: 12px;
     justify-content: center;
     align-items: flex-start;
 }
-
 .pokemon-tables>table {
     text-align: left;
     border-collapse: collapse;
 }
-
 .pokemon-tables>table :is(th, td) {
     padding: 5px 4px;
     border: 1px solid gray;
 }
-
 .pokemon-tables>table th {
     white-space: nowrap;
     font-size: 18px;
 }
-
-
 .pokemon-moves {
     margin: 20px 0px 5px;
-
 }
-
 #search-input {
     width: 20%;
     font-size: 18px;
@@ -96,22 +78,16 @@
     margin-top: 20px;
     margin-left: 70%;
 }
-
 #search-input::placeholder {
     font-size: 18px;
 }
-
-
 bdi {
     color: #fe0000;
     font-weight: 600;
 }
-
 bdi::after {
     content: " :";
 }
-
-
 @media (max-width: 412px) {
     .pokemon {
         margin: 10px;
