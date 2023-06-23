@@ -43,7 +43,6 @@ const SearchPage = () => {
     }
   };
 
-
   return (
     <div style={{marginTop:"60px"}}>
       <Heading>Search Page</Heading>

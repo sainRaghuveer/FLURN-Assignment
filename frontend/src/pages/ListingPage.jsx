@@ -39,7 +39,6 @@ const ListingPage = () => {
       setTimeout(async () => {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=10&offset=${(page - 1) * 10}`);
         // const abilityFilter = selectedAbilities.length > 0 ? `&ability=${selectedAbilities[0]}` : '';
-
         // const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=10&offset=${(page - 1) * 10}${abilityFilter}`);
         if (response.ok) {
           const data = await response.json();
@@ -86,7 +85,7 @@ const ListingPage = () => {
       }
     };
 
-    handleResize(); // Set initial width
+    handleResize(); // Setting initial width
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
