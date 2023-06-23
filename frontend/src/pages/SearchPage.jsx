@@ -45,7 +45,7 @@ const SearchPage = () => {
 
 
   return (
-    <div>
+    <div style={{marginTop:"60px"}}>
       <Heading>Search Page</Heading>
       <Input type="text" value={pokemonName} onChange={(e) => setPokemonName(e.target.value)} />
       {loading ? <Button
