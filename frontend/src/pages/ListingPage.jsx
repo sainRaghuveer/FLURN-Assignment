@@ -6,6 +6,7 @@ import { Box, Flex, Spinner } from '@chakra-ui/react';
 import { SkeletonE } from '../components/Skeleton';
 import FilterOption from '../components/FilterOption';
 import { SpeciesArr, abilityArr } from '../utils/data';
+import uniqid from 'uniqid';
 
 const ListingPage = () => {
   const [pokemonList, setPokemonList] = useState([]);
@@ -16,8 +17,6 @@ const ListingPage = () => {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const [selectedAbilities, setSelectedAbilities] = useState([]);
-  const [selectedCharacteristics, setSelectedCharacteristics] = useState([]);
   const [groups, setGroups] = useState([]);
   const [habitats, setHabitats] = useState([]);
   const [locations, setLocations] = useState([]);
@@ -38,10 +37,10 @@ const ListingPage = () => {
     try {
       setIsLoading(true);
       setTimeout(async () => {
-        // const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=10&offset=${(page - 1) * 10}`);
-        const abilityFilter = selectedAbilities.length > 0 ? `&ability=${selectedAbilities[0]}` : '';
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=10&offset=${(page - 1) * 10}`);
+        // const abilityFilter = selectedAbilities.length > 0 ? `&ability=${selectedAbilities[0]}` : '';
 
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=10&offset=${(page - 1) * 10}${abilityFilter}`);
+        // const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=10&offset=${(page - 1) * 10}${abilityFilter}`);
         if (response.ok) {
           const data = await response.json();
           setPokemonList((prevList) => [...prevList, ...data.results]);
@@ -76,20 +75,6 @@ const ListingPage = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isLoading, error]);
 
-  const handleAbilityFilter = (abilities) => {
-    setSelectedAbilities(abilities);
-    setPokemonList([]);
-    setCurrentPage(1);
-    fetchPokemonList(1);
-  };
-
-  const handleSpeciesFilter = (characteristics) => {
-    setSpecies(species);
-    setPokemonList([]);
-    setCurrentPage(1);
-    fetchPokemonList(1);
-  };
-
   useEffect(() => {
     // Adjusting content area width when the window is resized
     const handleResize = () => {
@@ -114,15 +99,11 @@ const ListingPage = () => {
           filteredData={filteredData}
           abilities={abilityArr}
           species={SpeciesArr}
-          selectedAbilities={selectedAbilities}
-          selectedSpecies={species}
-          onAbilityFilter={handleAbilityFilter}
-          onSpeciesFilter={handleSpeciesFilter}
         />
       </Box>
       <Box ref={contentRef} marginLeft={"20%"} marginTop={"60px"} width={"82%"} padding={4} display="grid" gap={"20px"} gridTemplateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)", xl: "repeat(4, 1fr)", "2xl": "repeat(4, 1fr)" }} overflowY="auto">
         {isLoading ? <SkeletonE /> : pokemonList.map((pokemon, index) => (
-          <PokemonCard key={`${pokemon.name}+${index}`} pokemonName={pokemon.name} PokemonUrl={pokemon.url} pokemon={pokemon} />
+          <PokemonCard key={`${pokemon.name}+${index}+${uniqid()}`} pokemonName={pokemon.name} PokemonUrl={pokemon.url} pokemon={pokemon} />
         ))}
       </Box>
     </Flex>

@@ -1,30 +1,9 @@
 import React, { useState } from 'react';
 import { Checkbox, Button, VStack } from '@chakra-ui/react';
-import axios from "axios"
+import axios from "axios";
+import uniqid from "uniqid"
 
-const FilterOptions = ({ abilities, species, onAbilityFilter, onSpeciesFilter, filteredData }) => {
-  // const [selectedAbilities, setSelectedAbilities] = useState([]);
-  // const [selectedSpecies, setSelectedSpecies] = useState([]);
-
-  // const handleAbilityChange = (event) => {
-  //   const { value, checked } = event.target;
-
-  //   if (checked) {
-  //     setSelectedAbilities((prevAbilities) => [...prevAbilities, value]);
-  //   } else {
-  //     setSelectedAbilities((prevAbilities) => prevAbilities.filter((ability) => ability !== value));
-  //   }
-  // };
-
-  // const handleSpeciesChange = (event) => {
-  //   const { value, checked } = event.target;
-
-  //   if (checked) {
-  //     setSelectedSpecies((prevSpecies) => [...prevSpecies, value]);
-  //   } else {
-  //     selectedSpecies((prevSpecies) => prevSpecies.filter((char) => char !== value));
-  //   }
-  // };
+const FilterOptions = ({ abilities, species, filteredData }) => {
 
   const getDatas = async (ids) => {
     try {
@@ -48,8 +27,6 @@ const FilterOptions = ({ abilities, species, onAbilityFilter, onSpeciesFilter, f
       if (el.checked) selectedAbilities.push(el.value);
     });
     getDatas(selectedAbilities);
-    // onAbilityFilter(selectedAbilities);  
-    // onSpeciesFilter(selectedSpecies);
   };
 
   return (
@@ -57,7 +34,7 @@ const FilterOptions = ({ abilities, species, onAbilityFilter, onSpeciesFilter, f
       <h3>Filter by Abilities:</h3>
       {abilities.map((ability) => (
         <Checkbox
-          key={ability}
+          key={uniqid()}
           value={ability.id}
         >
           {ability.name}
