@@ -24,6 +24,14 @@ PokeDex is a web application that allows you to explore and manage Pokemon data 
 
 - Local Storage: Store bookmarked Pokemon in the browser's local storage for persistent data.
 
+
+## Usage
+- Use the search page to search for a specific Pokemon by its name.
+- After a successful API response, you will be redirected to the listing page.
+- Browse through the list of Pokemon, which supports infinite scrolling for seamless navigation.
+- Click on a Pokemon to view its detailed information on the details page.
+- On the details page, you can bookmark the Pokemon by clicking on the bookmark icon.
+- Bookmarked Pokemon can be viewed and managed on the bookmarks screen.
 <br>
 
 ##  Folder Structure
