@@ -35,8 +35,6 @@ const ListingPage = () => {
       setIsLoading(true);
       setTimeout(async () => {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=10&offset=${(page - 1) * 10}`);
-        // const abilityFilter = selectedAbilities.length > 0 ? `&ability=${selectedAbilities[0]}` : '';
-        // const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=10&offset=${(page - 1) * 10}${abilityFilter}`);
         if (response.ok) {
           const data = await response.json();
           setPokemonList((prevList) => [...prevList, ...data.results]);
