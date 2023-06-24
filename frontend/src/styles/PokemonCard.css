@@ -14,7 +14,6 @@
   background-color: rgba(121, 149, 171, 0.3);
   transition: transform 0.3s ease-in-out;
 }
-
 .pokemon-card:hover {
   transform: scale(1.05);
 }
