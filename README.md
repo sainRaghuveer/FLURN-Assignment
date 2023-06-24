@@ -131,34 +131,34 @@ Note : `You can use any one of them.`
 
 <br>
     
-##  Status Menu  
+##  
     
 <img src="" alt="image"/>
 
 <br>
     
-## Action Menu
+## 
     
 <img src="" alt="image"/>
 
 <br>
     
-## Single user View   
+##   
 
 <img src="" alt="image"/>
 
 <br>
     
-## Download Csv of User data   
+##  
     
 <img src="" alt="image"/>
     
-## User update   
+##   
     
 <img src="" alt="image"/>
 
 <br>
     
-## Add new user
+## 
     
 <img src="" alt="image"/>
