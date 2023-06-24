@@ -125,40 +125,68 @@ Note : `You can use any one of them.`
 
 <br>
     
-## Home Page
+## Home Page/Search Page
  
-<img src="" alt="image"/>
+<img src="https://github.com/sainRaghuveer/FLURN-Assignment/assets/112657812/50f55419-0142-49cc-9f46-32149bc51bdf" alt="image"/>
 
 <br>
     
-##  
+##  Search something while api call it will show loading button
     
-<img src="" alt="image"/>
+<img src="https://github.com/sainRaghuveer/FLURN-Assignment/assets/112657812/7bad8585-8277-4f30-a05f-f026e9347db3" alt="image"/>
 
 <br>
     
-## 
+## wrong search will give error
     
-<img src="" alt="image"/>
+<img src="https://github.com/sainRaghuveer/FLURN-Assignment/assets/112657812/61302724-40d0-4afd-a1a8-6d3743db889d" alt="image"/>
 
 <br>
     
-##   
+##  List Page
 
-<img src="" alt="image"/>
-
-<br>
-    
-##  
-    
-<img src="" alt="image"/>
-    
-##   
-    
-<img src="" alt="image"/>
+<img src="https://github.com/sainRaghuveer/FLURN-Assignment/assets/112657812/335017ab-e427-4d67-bb11-97c0b67b3e01" alt="image"/>
 
 <br>
     
-## 
+##  Skeleton will be visible while data get fetched
     
-<img src="" alt="image"/>
+<img src="https://github.com/sainRaghuveer/FLURN-Assignment/assets/112657812/25e60f22-8ccd-41a5-8c8b-df22de8d709b" alt="image"/>
+
+<br>    
+
+## Single pokemon data after clicking any card    
+<img src="https://github.com/sainRaghuveer/FLURN-Assignment/assets/112657812/dbf2e151-6ec3-4722-be31-40afa19f490e" alt="image"/>
+
+<br>
+    
+## You can search inside detail page also for any other pokemon you don't have to go list page and search it over there
+    
+<img src="https://github.com/sainRaghuveer/FLURN-Assignment/assets/112657812/1ee457c4-1727-4186-aac8-cf8a4420186d" alt="image"/>
+
+<br>
+    
+## Add in favorites/bookmark list by clicking on the bookmark icon
+    
+<img src="https://github.com/sainRaghuveer/FLURN-Assignment/assets/112657812/c91b7815-c9fc-4d19-b36b-02f620953529" alt="image"/>
+
+<br>
+    
+## Bookmark page you will see details also when click any card and you can remove it from the bookmark clicking on the icon 
+    
+<img src="https://github.com/sainRaghuveer/FLURN-Assignment/assets/112657812/874ed784-b28a-42d6-8e2e-aec5eef15d4b" alt="image"/>
+
+<br>
+    
+## Everytime when event will happen you will see this kind of notification 
+    
+<img src="https://github.com/sainRaghuveer/FLURN-Assignment/assets/112657812/040313ce-8ddf-4c11-89d3-ee13e6965bdc" alt="image"/>
+
+<br>
+    
+## You can enjoy this app in dark mode also
+    
+<img src="https://github.com/sainRaghuveer/FLURN-Assignment/assets/112657812/8051f239-4030-4ab1-b5bd-d8c021e65891" alt="image"/>
+
+
+
