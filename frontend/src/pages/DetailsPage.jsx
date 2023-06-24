@@ -118,7 +118,7 @@ function DetailsPage() {
                     <Td>{pokemon?.stats && pokemon?.stats[1]?.base_stat}</Td>
                   </Tr>
                   <Tr>
-                    <Td><bdi>Defense</bdi></Td>
+                    <Td><bdi>DEFENCE</bdi></Td>
                     <Td>{pokemon?.stats && pokemon?.stats[2]?.base_stat}</Td>
                   </Tr>
                 </Tbody>
