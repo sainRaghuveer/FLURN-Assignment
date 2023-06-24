@@ -41,14 +41,14 @@ PokeDex is a web application that allows you to explore and manage Pokemon data 
 |    |      └── Navbar.jsx  
 |    |      └── PokemonCard.jsx  
 |    |      └── Skeleton.jsx  
-|    |      
 |    └── customHook
 |    |      └── UseToast.jsx       
 |    └── pages
 |    |      └── BookmarksPage.jsx  
 |    |      └── DetailsPage.jsx  
 |    |      └── ListingPage.jsx  
-|    |      └── SearchPage.jsx  
+|    |      └── SearchPage.jsx
+|    |      └── FourOFourPage.jsx   
 |    └── routes
 |    |      └── AllRoutes.jsx  
 |    └── styles
