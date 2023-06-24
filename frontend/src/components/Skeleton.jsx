@@ -5,7 +5,7 @@ export const SkeletonE = () => {
     return (
         <>
             {
-                new Array(21).fill(0).map(el => <Box key={uniqid()} display="flex" flexDirection="column" gap="2px" borderRadius="10px">
+                new Array(24).fill(0).map(el => <Box key={uniqid()} display="flex" flexDirection="column" gap="2px" borderRadius="10px">
                     <Skeleton
                         height='240px'
                         borderRadius={"10px 10px 0 0"}
