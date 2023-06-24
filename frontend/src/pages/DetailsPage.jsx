@@ -13,6 +13,12 @@ function DetailsPage() {
   const [search, setSearch] = useState("");
   const { pokemonName } = useParams();
   const toastMsg = UseToast();
+  const [imageError, setImageError] = useState(false);
+  const defaultUrl="https://www.analyticdesign.com/wp-content/uploads/2018/07/unnamed.gif";
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
 
   const getPokemon = async (searchQuery) => {
     if (searchQuery == "") return;
@@ -83,10 +89,10 @@ function DetailsPage() {
       {loading ? <Box width="30%" margin="auto" marginTop="50px"><Spinner size="xl" color='red.500' thickness='6px' speed='0.65s' /></Box> : <article className={style.pokemon}>
         <div className={style["container"]}>
           <aside className={style["pokemon-pic"]}>
-            <Image title={pokemon?.name + " front deafult"} src={pokemon?.sprites?.front_default} alt={pokemon?.name + " front deafult"} />
-            <Image title={pokemon?.name + " front shiny"} src={pokemon?.sprites?.front_shiny} alt={pokemon?.name + " front shiny"} />
-            <Image title={pokemon?.name + " back shiny"} src={pokemon?.sprites?.back_shiny} alt={pokemon?.name + " back shiny"} />
-            <Image title={pokemon?.name + " back default"} src={pokemon?.sprites?.back_default} alt={pokemon?.name + " back default"} />
+            <Image title={pokemon?.name + " front deafult"} onError={handleImageError} src={imageError?defaultUrl:pokemon?.sprites?.front_default} alt={pokemon?.name + " front deafult"} />
+            <Image title={pokemon?.name + " front shiny"} onError={handleImageError} src={imageError?defaultUrl:pokemon?.sprites?.front_shiny} alt={pokemon?.name + " front shiny"} />
+            <Image title={pokemon?.name + " back shiny"} onError={handleImageError} src={imageError?defaultUrl:pokemon?.sprites?.back_shiny} alt={pokemon?.name + " back shiny"} />
+            <Image title={pokemon?.name + " back default"} onError={handleImageError} src={imageError?defaultUrl:pokemon?.sprites?.back_default} alt={pokemon?.name + " back default"} />
           </aside>
           <div className={style["pokemon-details"]}>
             <h1 style={{ fontSize: "25px", fontWeight: "bold" }}>{pokemon?.name} <span onClick={handleDoFavorite}>{favoriteList.includes(pokemon?.name) ? <FaBookmark /> : <FaRegBookmark />}</span></h1>
