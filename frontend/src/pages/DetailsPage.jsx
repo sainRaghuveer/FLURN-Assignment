@@ -7,7 +7,6 @@ import UseToast from '../customHooks/UseToast';
 
 function DetailsPage() {
   const [favoriteList, setFavoriteList] = useState([]);
-  console.log('favoriteList:', favoriteList)
   const [pokemon, setPokemon] = useState({});
   let timoutRef = useRef();
   const [loading, setLoading] = useState(false);
@@ -17,35 +16,30 @@ function DetailsPage() {
 
   const getPokemon = async (searchQuery) => {
     if (searchQuery == "") return;
-    console.log(pokemonName);
     setLoading(true);
-    try {
-      setTimeout(async () => {
-        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${searchQuery || pokemonName}`)
+      try {
+        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${searchQuery || pokemonName}`);
         if (res.ok) {
           const response = await res.json();
           setPokemon(response);
-          setLoading(false)
         } else {
           toastMsg({
             title: "Something went wrong or pokemon doesn't exist with this name",
             status: "warning"
           });
         }
-
-      }, 1000)
-      setLoading(false);
-    } catch (error) {
-      console.log('error:', error)
-      if (!searchQuery) {
-        toastMsg({
-          title: `${error.message}`,
-          status: "error"
-        });
+      } catch (error) {
+        console.log('error:', error);
+        if (!searchQuery) {
+          toastMsg({
+            title: `${error.message}`,
+            status: "error"
+          });
+        }
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
-    }
-    getFavorites();
+      getFavorites();
   }
 
   function getFavorites() {
@@ -72,6 +66,7 @@ function DetailsPage() {
   }
 
   useEffect(() => {
+    setLoading(true);
     getPokemon();
   }, [])
 

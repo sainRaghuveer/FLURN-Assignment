@@ -13,9 +13,19 @@
   justify-content: center;
   background-color: rgba(121, 149, 171, 0.3);
   transition: transform 0.3s ease-in-out;
+  align-items: center;
 }
 .pokemon-card:hover {
   transform: scale(1.05);
+}
+.pokemon-card>div{
+  text-align: center;
+  background-color: #5095d6;
+  padding: 17px;
+  border-bottom-left-radius:10px;
+  border-bottom-right-radius:10px;
+  letter-spacing: 1px;
+  font-weight: 600;
 }
 
 @media screen and (min-width:601px) and (max-width: 900px) {
