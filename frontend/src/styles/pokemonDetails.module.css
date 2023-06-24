@@ -1,3 +1,6 @@
+.parentContainer{
+    margin-top: 70px;
+}
 .pokemon {
     padding: 5px;
     margin: 50px auto;
@@ -77,6 +80,7 @@
     padding: 10px;
     margin-top: 20px;
     margin-left: 70%;
+    border: 1px solid;
 }
 #search-input::placeholder {
     font-size: 18px;
@@ -124,5 +128,9 @@ bdi::after {
     #search-input {
         width: 100%;
         margin-left: 0;
+    }
+    #search-input{
+        width: 90%;
+        margin: auto;
     }
 }
