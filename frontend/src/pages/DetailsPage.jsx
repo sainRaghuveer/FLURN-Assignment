@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { FaRegBookmark, FaBookmark } from "react-icons/fa"
 import style from '../styles/pokemonDetails.module.css';
-import { Heading, Image, Input, Spinner, Table, Tbody, Td, Th, Tr } from '@chakra-ui/react';
+import { Box, Heading, Image, Input, Spinner, Table, Tbody, Td, Th, Tr } from '@chakra-ui/react';
 import UseToast from '../customHooks/UseToast';
 
 function DetailsPage() {
@@ -28,7 +28,9 @@ function DetailsPage() {
             status: "warning"
           });
         }
+        setLoading(false);
       } catch (error) {
+        setLoading(false);
         console.log('error:', error);
         if (!searchQuery) {
           toastMsg({
@@ -36,8 +38,6 @@ function DetailsPage() {
             status: "error"
           });
         }
-      } finally {
-        setLoading(false);
       }
       getFavorites();
   }
@@ -77,10 +77,10 @@ function DetailsPage() {
     }, 2000);
   }, [search])
 
-  return loading ? <Spinner size="xl" color='red.500' thickness='6px' speed='0.65s' /> : (
+  return (
     <div className={style.parentContainer}>
       <Input id={style["search-input"]} placeholder='search Pokemon...' onChange={(e) => setSearch(e.currentTarget.value)} />
-      <article className={style.pokemon}>
+      {loading ? <Box width="30%" margin="auto" marginTop="50px"><Spinner size="xl" color='red.500' thickness='6px' speed='0.65s' /></Box> : <article className={style.pokemon}>
         <div className={style["container"]}>
           <aside className={style["pokemon-pic"]}>
             <Image title={pokemon?.name + " front deafult"} src={pokemon?.sprites?.front_default} alt={pokemon?.name + " front deafult"} />
@@ -161,7 +161,7 @@ function DetailsPage() {
         <div className={style["pokemon-moves"]}>
           <p><bdi>Moves</bdi> {pokemon?.moves?.map(el => el.move.name).join(", ")}</p>
         </div>
-      </article>
+      </article>}
     </div>
   )
 }
