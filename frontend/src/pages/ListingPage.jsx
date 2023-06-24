@@ -24,12 +24,9 @@ const ListingPage = () => {
 
   const contentRef = useRef(null);
 
-
   const filteredData = (values)=>{
     setPokemonList(values)
   }
-
-
   const fetchPokemonList = async (page) => {
     setIsLoading(true);
     setError(null);

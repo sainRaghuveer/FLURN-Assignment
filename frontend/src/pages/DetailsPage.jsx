@@ -24,7 +24,6 @@ function DetailsPage() {
         const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${searchQuery || pokemonName}`)
         if (res.ok) {
           const response = await res.json();
-          console.log(response);
           setPokemon(response);
           setLoading(false)
         } else {

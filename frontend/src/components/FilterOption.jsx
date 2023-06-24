@@ -15,7 +15,6 @@ const FilterOptions = ({ abilities, species, filteredData }) => {
       })
       values = values.map(el => el.pokemon);
       filteredData(values);
-      console.log('values', values)
     } catch (error) {
       console.log('error', error);
     }
