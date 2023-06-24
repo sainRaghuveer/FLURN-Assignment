@@ -48,12 +48,24 @@ export default function Navbar() {
         right={0}
         zIndex={999}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <Box>FLURN</Box>
-          <Box style={{ display: "flex", justifyContent: "space-evenly", width: "40%" }}>
-            <Button onClick={() => navigate("/")} bg={"gray"}>Search</Button>
-            <Button onClick={() => navigate("/list")} bg={"gray"}>List</Button>
-            <Button onClick={() => navigate("/bookmarks")} bg={"gray"}>Bookmarks</Button>
+          <Box display={{base:"none",md:"block", lg:"block",xl:"block","2xl":"block"}}>FLURN</Box>
+          <Box
+            display="flex"
+            justifyContent='space-evenly'
+            width='100%'
+            mt={4}
+          >
+            <Button onClick={() => navigate('/')} bg='#d7dfe6' marginLeft="-10px">
+              Search
+            </Button>
+            <Button onClick={() => navigate('/list')} bg='#d7dfe6' marginLeft="5px" marginRight="5px">
+              List
+            </Button>
+            <Button onClick={() => navigate('/bookmarks')} bg='#d7dfe6'>
+              Bookmarks
+            </Button>
           </Box>
+
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>
               <Button onClick={toggleColorMode}>
