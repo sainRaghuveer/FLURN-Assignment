@@ -107,6 +107,9 @@ Note : `You can use any one of them.`
 <br>
 
 
+> **_NOTE:_**  In this Pokedex api I felt api issues like sometime images will not loads in browser so If this happens then it doesn't mean that your code is wrong. Api have some issue so keep it in your mind.
+
+
 ## Frontend Deployed Link
 
 <br>
