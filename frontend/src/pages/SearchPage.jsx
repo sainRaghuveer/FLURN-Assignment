@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Heading, Input, Button, Image, Box, Text } from "@chakra-ui/react"
+import { Heading, Input, Button, Image, Box, Text, FormLabel } from "@chakra-ui/react"
 import UseToast from '../customHooks/UseToast';
 import "../styles/Search.css"
 
@@ -55,6 +55,7 @@ const SearchPage = () => {
   return (
     <div style={{ marginTop: "60px" }}>
       <Box width="70%" margin="auto" marginTop="100px" >
+      <FormLabel>Search your pokemon</FormLabel>
         <Input type="text" placeholder='Search pokemon here like ditto, balbasaur, venusaur.....' border="1px solid" width="100%" margin="auto" value={pokemonName} onChange={(e) => setPokemonName(e.target.value)} />
         {loading ? <Button
           isLoading

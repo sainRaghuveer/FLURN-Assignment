@@ -10,7 +10,7 @@ const PokemonCard = ({ pokemonName, PokemonUrl, pokemon }) => {
     <>
       <Link to={`/pokemon/${pokemon.name}`}>
         <div className="pokemon-card">
-          <Image src={url} alt={pokemon.name} width={"250px"} height={"150px"} borderRadius={"10px"}></Image>
+          <Image src={url} alt={pokemon.name} width={"230px"} height={"150px"} borderRadius={"10px"}></Image>
           <h3>{pokemonName}</h3>
         </div>
       </Link>

@@ -54,6 +54,7 @@ export default function Navbar() {
             justifyContent='space-evenly'
             width='100%'
             mt={4}
+            marginBottom="13px"
           >
             <Button onClick={() => navigate('/')} bg='#d7dfe6' marginLeft="-10px">
               Search
